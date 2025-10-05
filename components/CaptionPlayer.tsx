@@ -1,18 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { SPEAKER_COLORS } from '@/types'
+import { SPEAKER_COLORS, Caption } from '@/types'
 
 export default function CaptionPlayer() {
-  const [captions, setCaptions] = useState([
+  const [captions] = useState<Caption[]>([
     {
       id: '1',
       text: 'Welcome to AccessiCaption!',
       speaker_id: 0,
       timestamp: Date.now(),
-      volume: 'normal' as const,
-      emotion: 'happy' as const,
-      pace: 'normal' as const,
+      volume: 'normal',
+      emotion: 'happy',
+      pace: 'normal',
       emphasis: false,
     },
     {
@@ -27,9 +27,9 @@ export default function CaptionPlayer() {
       text: 'Hello! Thanks for joining us today.',
       speaker_id: 1,
       timestamp: Date.now() + 2000,
-      volume: 'loud' as const,
-      emotion: 'happy' as const,
-      pace: 'normal' as const,
+      volume: 'loud',
+      emotion: 'happy',
+      pace: 'normal',
       emphasis: true,
     },
   ])
@@ -57,7 +57,7 @@ export default function CaptionPlayer() {
 
                 return (
                   <div key={caption.id} className="flex items-start gap-3">
-                    {speakerColor && (
+                    {speakerColor && caption.speaker_id !== undefined && (
                       <div 
                         className="speaker-badge flex-shrink-0"
                         style={{ backgroundColor: speakerColor }}
