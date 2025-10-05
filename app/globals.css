@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 37.8 92.7% 50.4%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215.4 16.3% 46.9%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 37.7 92.1% 50.2%;
+    --accent-foreground: 0 0% 0%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --muted: 214.3 31.8% 91.4%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --border: 214.3 31.8% 91.4%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .caption-text {
+    @apply font-medium leading-relaxed;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .caption-panel {
+    @apply rounded-lg shadow-lg backdrop-blur-sm;
+    background: rgba(255, 255, 255, 0.95);
+  }
+
+  .speaker-badge {
+    @apply inline-flex items-center justify-center w-8 h-8 rounded-full text-white font-bold text-sm;
+  }
+
+  .sound-indicator {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent bg-opacity-20 text-accent-foreground text-sm font-medium;
+  }
+
+  .glossary-highlight {
+    @apply underline decoration-primary decoration-2 cursor-pointer hover:bg-primary hover:bg-opacity-10 transition-colors;
+  }
+
+  .quiz-option {
+    @apply w-full p-4 text-left rounded-lg border-2 border-border hover:border-primary hover:bg-primary hover:bg-opacity-5 transition-all cursor-pointer;
+  }
+
+  .quiz-option.selected {
+    @apply border-primary bg-primary bg-opacity-10;
+  }
+
+  .quiz-option.correct {
+    @apply border-green-500 bg-green-500 bg-opacity-10;
+  }
+
+  .quiz-option.incorrect {
+    @apply border-red-500 bg-red-500 bg-opacity-10;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-medium hover:bg-opacity-90 transition-all focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border-2 border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6 border border-border;
+  }
+}
+
+@layer utilities {
+  .text-volume-quiet {
+    @apply text-caption-sm opacity-70;
+  }
+
+  .text-volume-normal {
+    @apply text-caption-md;
+  }
+
+  .text-volume-loud {
+    @apply text-caption-lg font-bold;
+  }
+
+  .text-emotion-happy {
+    @apply text-yellow-600;
+  }
+
+  .text-emotion-sad {
+    @apply text-blue-600;
+  }
+
+  .text-emotion-angry {
+    @apply text-red-600;
+  }
+
+  .text-emotion-surprised {
+    @apply text-purple-600;
+  }
+
+  .text-pace-slow {
+    animation: fadeIn 1.5s ease-in;
+  }
+
+  .text-pace-fast {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .text-emphasis {
+    @apply font-bold underline;
+    animation: pulse 0.5s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
